@@ -1,0 +1,19 @@
+version: "3.3"
+
+services:
+    app:
+        build:
+            context: ./
+            dockerfile: ./dockerfiles/app.Dockerfile
+        ports:
+            - 8000:8000
+        volumes:
+            - ./:/usr/src/app
+            - /usr/src/app/node_modules
+
+    installer:
+        build:
+            context: ./
+            dockerfile: ./dockerfiles/installer.Dockerfile
+        volumes:
+            - ./:/usr/src/app
